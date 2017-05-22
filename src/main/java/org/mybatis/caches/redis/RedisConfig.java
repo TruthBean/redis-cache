@@ -32,6 +32,7 @@ public class RedisConfig extends JedisPoolConfig {
     private int database = Protocol.DEFAULT_DATABASE;
     private String clientName;
     private boolean ssl;
+    private int redisCacheExpireTime;
     private SSLSocketFactory sslSocketFactory;
     private SSLParameters sslParameters;
     private HostnameVerifier hostnameVerifier;
@@ -133,4 +134,11 @@ public class RedisConfig extends JedisPoolConfig {
         this.soTimeout = soTimeout;
     }
 
+    public int getRedisCacheExpireTime() {
+        return redisCacheExpireTime;
+    }
+
+    public void setRedisCacheExpireTime(int redisCacheExpireTime) {
+        this.redisCacheExpireTime = redisCacheExpireTime;
+    }
 }
