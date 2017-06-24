@@ -38,11 +38,13 @@ public final class RedisCache implements Cache {
 
     private static RedisConfig redisConfig;
 
+    private static final String KEY_PRE = "mybatis:cache:";
+
     public RedisCache(final String id) {
         if (id == null) {
             throw new IllegalArgumentException("Cache instances require an ID");
         }
-        this.id = id;
+        this.id = KEY_PRE + id;
         redisConfig = RedisConfigurationBuilder.getInstance().parseConfiguration();
         pool = new JedisPool(redisConfig, redisConfig.getHost(), redisConfig.getPort(),
                 redisConfig.getConnectionTimeout(), redisConfig.getSoTimeout(), redisConfig.getPassword(),
@@ -82,7 +84,9 @@ public final class RedisCache implements Cache {
             @Override
             public Object doWithRedis(Jedis jedis) {
                 jedis.hset(id.getBytes(), key.toString().getBytes(), SerializeUtil.serialize(value));
-                jedis.expire(id.getBytes(), redisConfig.getRedisCacheExpireTime());
+                int expireTime = redisConfig.getRedisCacheExpireTime();
+                if (expireTime > 0)
+                    jedis.expire(id.getBytes(), expireTime);
                 return null;
             }
         });
