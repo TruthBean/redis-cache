@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-       Copyright 2015-2016 the original author or authors.
+       Copyright 2015-2017 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.mybatis</groupId>
     <artifactId>mybatis-parent</artifactId>
-    <version>29-SNAPSHOT</version>
+    <version>29</version>
     <relativePath />
   </parent>
 
@@ -35,7 +35,7 @@
   <description>Redis support for MyBatis Cache</description>
   <url>https://github.com/mybatis/redis-cache</url>
 
-  <inceptionYear>2015</inceptionYear>
+  <inceptionYear>2017</inceptionYear>
 
   <scm>
     <url>http://github.com/mybatis/redis-cache</url>
