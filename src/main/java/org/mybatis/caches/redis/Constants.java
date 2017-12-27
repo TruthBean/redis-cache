@@ -15,17 +15,24 @@
  */
 package org.mybatis.caches.redis;
 
-import redis.clients.jedis.Jedis;
-
 /**
- * @author UNKOWN
+ * @author Rogar·Q
  */
-public interface RedisCallback {
+public class Constants {
+    private Constants() {
+    }
 
-    /**
-     * redis action
-     * @param jedis redis client
-     * @return
-     */
-    Object doWithRedis(Jedis jedis);
+    public static final String CLUSTER = "cluster";
+
+    public static final String SIMPLE = "simple";
+
+    public static final String SENTINEL = "sentinel";
+
+    public static final String COLON = ":";
+
+    public static final String COMMA = ",";
+
+    public static final String KRYO = "kryo";
+
+    public static final String JDK = "jdk";
 }

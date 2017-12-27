@@ -1,5 +1,5 @@
 /**
- *    Copyright 2015 the original author or authors.
+ *    Copyright 2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -13,24 +13,27 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.mybatis.caches.redis;
+package org.mybatis.caches.redis.serialize;
+
+import org.apache.ibatis.cache.CacheException;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import org.apache.ibatis.cache.CacheException;
+/**
+ * Serialize with JDK
+ * Contains Redis support for MyBatis Cache.
+ *
+ * @author UNKOWN
+ */
+public class JdkSerializer implements Serializer {
 
-public final class SerializeUtil {
-
-    private SerializeUtil() {
-        // prevent instantiation
-    }
-
-    public static byte[] serialize(Object object) {
-        ObjectOutputStream oos = null;
-        ByteArrayOutputStream baos = null;
+    @Override
+    public byte[] serialize(Object object) {
+        ObjectOutputStream oos;
+        ByteArrayOutputStream baos;
         try {
             baos = new ByteArrayOutputStream();
             oos = new ObjectOutputStream(baos);
@@ -41,11 +44,12 @@ public final class SerializeUtil {
         }
     }
 
-    public static Object unserialize(byte[] bytes) {
+    @Override
+    public Object deserialize(byte[] bytes) {
         if (bytes == null) {
             return null;
         }
-        ByteArrayInputStream bais = null;
+        ByteArrayInputStream bais;
         try {
             bais = new ByteArrayInputStream(bytes);
             ObjectInputStream ois = new ObjectInputStream(bais);

@@ -13,19 +13,21 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package org.mybatis.caches.redis;
+package org.mybatis.caches.redis.serialize;
 
-import redis.clients.jedis.Jedis;
-
-/**
- * @author UNKOWN
- */
-public interface RedisCallback {
+public interface Serializer {
 
     /**
-     * redis action
-     * @param jedis redis client
+     * serialize the object
+     * @param object
      * @return
      */
-    Object doWithRedis(Jedis jedis);
+    byte[] serialize(Object object);
+
+    /**
+     * deserialize the bytes to object
+     * @param bytes
+     * @return
+     */
+    Object deserialize(byte[] bytes);
 }

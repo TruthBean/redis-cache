@@ -1,5 +1,5 @@
 /**
- *    Copyright 2015 the original author or authors.
+ *    Copyright 2017 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -45,7 +45,7 @@ class DummyReadWriteLock implements ReadWriteLock {
         }
 
         @Override
-        public void lockInterruptibly() throws InterruptedException {
+        public void lockInterruptibly() {
             // Not implemented
         }
 
@@ -55,13 +55,13 @@ class DummyReadWriteLock implements ReadWriteLock {
         }
 
         @Override
-        public boolean tryLock(long paramLong, TimeUnit paramTimeUnit) throws InterruptedException {
+        public boolean tryLock(long paramLong, TimeUnit paramTimeUnit) {
             return true;
         }
 
         @Override
         public void unlock() {
-           // Not implemented
+            // Not implemented
         }
 
         @Override

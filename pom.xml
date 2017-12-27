@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-       Copyright 2015-2017 the original author or authors.
+       Copyright 2017 the original author or authors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
        you may not use this file except in compliance with the License.
@@ -16,124 +16,145 @@
        limitations under the License.
 
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <parent>
-    <groupId>org.mybatis</groupId>
-    <artifactId>mybatis-parent</artifactId>
-    <version>29</version>
-    <relativePath />
-  </parent>
+    <parent>
+        <groupId>org.mybatis</groupId>
+        <artifactId>mybatis-parent</artifactId>
+        <version>29</version>
+        <relativePath/>
+    </parent>
 
-  <groupId>org.mybatis.caches</groupId>
-  <artifactId>mybatis-redis</artifactId>
-  <version>1.0.0-beta3-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>org.mybatis.caches</groupId>
+    <artifactId>mybatis-redis</artifactId>
+    <version>1.0.0-beta3-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>mybatis-redis</name>
-  <description>Redis support for MyBatis Cache</description>
-  <url>https://github.com/mybatis/redis-cache</url>
+    <name>mybatis-redis</name>
+    <description>Redis support for MyBatis Cache</description>
+    <url>https://github.com/mybatis/redis-cache</url>
 
-  <inceptionYear>2017</inceptionYear>
+    <inceptionYear>2017</inceptionYear>
 
-  <scm>
-    <url>http://github.com/mybatis/redis-cache</url>
-    <connection>scm:git:ssh://github.com/mybatis/redis-cache.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/mybatis/redis-cache.git</developerConnection>
-    <tag>HEAD</tag>
-  </scm>
-  <issueManagement>
-    <system>GitHub Issue Management</system>
-    <url>https://github.com/mybatis/redis-cache/issues</url>
-  </issueManagement>
-  <ciManagement>
-    <system>Travis CI</system>
-    <url>https://travis-ci.org/mybatis/redis-cache</url>
-  </ciManagement>
-  <distributionManagement>
-    <site>
-      <id>gh-pages</id>
-      <name>Mybatis GitHub Pages</name>
-      <url>git:ssh://git@github.com/mybatis/redis-cache.git?gh-pages#</url>
-    </site>
-  </distributionManagement>
+    <scm>
+        <url>http://github.com/mybatis/redis-cache</url>
+        <connection>scm:git:ssh://github.com/mybatis/redis-cache.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/mybatis/redis-cache.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
+    <issueManagement>
+        <system>GitHub Issue Management</system>
+        <url>https://github.com/mybatis/redis-cache/issues</url>
+    </issueManagement>
+    <ciManagement>
+        <system>Travis CI</system>
+        <url>https://travis-ci.org/mybatis/redis-cache</url>
+    </ciManagement>
+    <distributionManagement>
+        <site>
+            <id>gh-pages</id>
+            <name>Mybatis GitHub Pages</name>
+            <url>git:ssh://git@github.com/mybatis/redis-cache.git?gh-pages#</url>
+        </site>
+    </distributionManagement>
 
-  <properties>
-    <clirr.comparisonVersion>1.0.3</clirr.comparisonVersion>
-    <findbugs.onlyAnalyze>org.mybatis.caches.redis.*</findbugs.onlyAnalyze>
-    <gcu.product>Cache</gcu.product>
-  </properties>
+    <properties>
+        <clirr.comparisonVersion>1.0.3</clirr.comparisonVersion>
+        <findbugs.onlyAnalyze>org.mybatis.caches.redis.*</findbugs.onlyAnalyze>
+        <gcu.product>Cache</gcu.product>
+    </properties>
 
-  <dependencies>
-    <!--
-     | Provided dependencies
-    -->
-    <dependency>
-      <groupId>org.mybatis</groupId>
-      <artifactId>mybatis</artifactId>
-      <version>3.4.4</version>
-      <scope>provided</scope>
-    </dependency>
+    <dependencies>
+        <!--
+         | Provided dependencies
+        -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.4.4</version>
+            <scope>provided</scope>
+        </dependency>
 
-    <!--
-     | compile dependencies
-    -->
-    <dependency>
-      <groupId>redis.clients</groupId>
-      <artifactId>jedis</artifactId>
-      <version>2.9.0</version>
-      <scope>compile</scope>
-    </dependency>
+        <!--
+         | compile dependencies
+        -->
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
+            <scope>compile</scope>
+        </dependency>
 
-    <!--
-     | trick to fix javadoc generation
-    -->
-    <dependency>
-      <groupId>javax.transaction</groupId>
-      <artifactId>transaction-api</artifactId>
-      <version>1.1</version>
-      <scope>provided</scope>
-    </dependency>
+        <!--
+         | kryo dependencies
+        -->
+        <dependency>
+            <groupId>com.esotericsoftware</groupId>
+            <artifactId>kryo</artifactId>
+            <version>4.0.1</version>
+            <scope>compile</scope>
+        </dependency>
 
-    <!--
-     | test dependencies
-    -->
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.slf4j</groupId>
-      <artifactId>slf4j-simple</artifactId>
-      <version>1.7.25</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        <!--
+         | trick to fix javadoc generation
+        -->
+        <dependency>
+            <groupId>javax.transaction</groupId>
+            <artifactId>transaction-api</artifactId>
+            <version>1.1</version>
+            <scope>provided</scope>
+        </dependency>
 
-  <profiles>
-    <profile>
-      <id>noTest</id>
-      <activation>
-        <property>
-          <name>noTest</name>
-          <value>true</value>
-        </property>
-      </activation>
-      <build>
-        <plugins>
-          <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-surefire-plugin</artifactId>
-            <configuration>
-              <skipTests>true</skipTests>
-            </configuration>
-          </plugin>
-        </plugins>
-      </build>
-    </profile>
-  </profiles>
+        <!--
+         | logging use slf4j
+        -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>1.7.25</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!--
+         | test dependencies
+        -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>1.7.25</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>noTest</id>
+            <activation>
+                <property>
+                    <name>noTest</name>
+                    <value>true</value>
+                </property>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <configuration>
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
 </project>
